@@ -1,16 +1,16 @@
 <template>
-    <div class="container col-sm-3" >    
+    <div class="container col-sm-4" >    
         <div class="align-self-center">
             <div class="card" id="login_id">
             <article class="card-body">
                 <a href="/registrar" class="float-right btn btn-outline-primary">Cadastre-se</a>
-                <h4 class="card-title mb-4 mt-1">Fazer Login </h4>
+                <h4 class="card-title mb-3 mt-1">Fazer Login </h4>
                 <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
-                    <input v-model="email" class="form-control" placeholder="Email or login" type="email">
+                    <input v-model="email" class="form-control" placeholder="Email ou login" type="email">
                 </div> <!-- input-group.// -->
                 </div> <!-- form-group// -->
                 <div class="form-group">
@@ -34,7 +34,6 @@
 </template>
 <script>
 import firebase from 'firebase';
-//import Auth from '@/components/Auth.vue';
 import * as firebaseui from "firebaseui"
 import "../../node_modules/firebaseui/dist/firebaseui.css"
 
@@ -65,12 +64,12 @@ export default {
                 provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
               },
               {
-                provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+                provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+                defaultCountry: 'BR',
               }
             ],
             callbacks: {
-                signInSuccessWithAuthResult() {
-                    
+                signInSuccessWithAuthResult() {  
                     window.location.href = '/'
                 }
             }
